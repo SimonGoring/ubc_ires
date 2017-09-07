@@ -1,49 +1,483 @@
 <!doctype html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<html lang="en">	
+<head>
+	<meta charset="utf-8">
+	<title>SGoring - Interdisciplinary Tech</title>
+	<link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" type="text/css" href="css/theme/sjg_custom.css">
+</head>
+ 
+<body>
+	<style> 
+		@import url('https://fonts.googleapis.com/css?family=Alegreya|Arimo|Crimson+Text|Droid+Sans|EB+Garamond|Playfair+Display|Lato|Lora|Open+Sans|Raleway');
+	</style>
 
-		<title>reveal.js</title>
+	<!-- Wrap the entire slide show in a div using the "reveal" class. -->
+	<div class="reveal">
+		<header style="position: absolute;top: 50px; left: 100px; z-index:500; font-size:100px;background-color: rgba(0,0,0,0.5)"></header>
 
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css">
+		<!-- Wrap all slides in a single "slides" class -->
+		<div class="slides">
+			<section id="title-slide">
+				<div data-animation-type="slide-right">
+					<h1>From technical challenges to interdisciplinary success</h1>
+					<p style="font-family:Raleway;">Understanding interactions between<br>climate, vegetation and land use change<br><br>
+					<p><meta rel="author">Simon J. Goring</meta>
+					<br>University of Wisconsin - Madison
+					<br><span style="font-size:50%">UBC IRES Faculty Seminar, September 7, 2017<span></p>
 
-		<!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+				</div>
+			</section>
+ 
+			<section id="acknowledgements" style="text-align: left;font-size:80%;width:90%;margin-left:5%"  data-background-color="#ffC038">
+				<aside class="notes">Recent advances in the data sciences have provided us with a number of new tools for dealing with the scientific "data deluge", however, scientific data are often noisy, poorly collated, and often wrong. This results in solutions that require both technical knowledge and deep disciplinary knowledge. The PalEON project brought together paleoecologists, climate and ecosystem modelers, statisticians and historical ecologists to begin to help improve climate forecasts by constraining slow ecosystem processes using historical data. This talk will review some of the challenges, solutions, and results of this data intensive project, in particular, highlighting the significant impact of EuroAmerican settlement on species distributions and climate relationships in the American Midwest.</aside>
+				<h1 style="text-align: left;margin:10;">Acknowledgements</h1>
+				<h2>Collaborators</h2>
+				<h3>PalEON</h3>
+				Andria Dawson, Jack Williams, Steve Jackson, Jason McLachlan, Chris Paciorek, Mevin Hooten, John Tipton, Jenn Marlon
+				<h3>Neotoma</h3>
+				Eric C. Grimm, Russ Graham, Allan Ashworth, Jessica Blois, Mike Stryker, Steve Crawford
+				<h3>EarthCube</h3>
+				Mark Uhen, Amy Myrbo, Nick McKay, Anders Noren, Julian Jenkins, Steve Richard, Kerstin Lehnert, Doug Fils
+			</section>
+			<section data-background-color="#f26768">
+				<section data-background-image="images/forest_fire.jpg" id="fire">
+					<aside class="notes">As a society we are faced with increasingly complex problems.</aside>
+					<div class="caption">
+						<a href="https://www.flickr.com/photos/npsclimatechange/14503287131" style="font-size:40%;">Photo by Mike Lewelling, National Park Service</a>
+					</div>
 
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				</section>
+				<section id="circle">
+				<img src="images/problems_circle.svg" width=70%>
+
+					<aside class="notes">Problems like climate change have many dimensions, and just as many questions.</aside>
+				<h1 style="font-size:90%;color:#fff;">
+					Facets of Complex Problems
+				</h1>
+				</section>
+				<section>
+					<img src="images/problems_circle_data.svg"  width=70%>
+				<h1 style="font-size:90%;color:#fff;">
+					Potential for Collaboration
+				</h1>
+				</section>
+				<section id=multi-question>
+				<aside class="notes">Often these questions use overlapping data, but rarely do workflows, tools, or even publications show patters of reuse across disciplines.</aside>
+					<img src="images/multi_question_data.svg" width=80%>
+				</section>
+			</section>
+			<section data-background-color="#ffc038" id="challenges">
+	 			<section>
+	 				<svg>
+	 				<h1>Challenges</h1>
+	 				<h2>Technical, Scientific & Human</h2>
+	 			</section>
+	 			<section id="technical">
+	 				<h1>Technical Challenges</h1>
+	 				<div style="float: left;width: 30%;height:500px">
+	 					<img class = "logos" src="images/FlyoverCountry.svg" height=30%><br>
+	 					<img class = "logos" src="images/Packrat.svg" height=30%><br>
+	 					<img class = "logos" src="images/software/PostgreSQL_logo.3colors.svg" height=30%>
+	 				</div>
+	 				<div style="float: left;width: 30%;height:500px">
+	 					<img class = "logos" src="images/software/neo4j_logo.svg" height=30%><br>
+	 					<img class = "logos" src="images/software/MariaDB-seal-flat.svg" height=30%><br>
+	 					<img class = "logos" src="images/software/Microsoft_SQL_Server_Logo.svg" height=30%>
+	 					
+	 				</div>
+	 				<div style="float: left;width: 30%;height:500px">
+	 					<img class = "logos" src="images/software/Rlogo.svg" style="height: 25%;"><br>
+	 					<img class = "logos" src="images/software/Node.js_logo.svg" style="height: 25%;"><br>
+	 					<img class = "logos" src="images/software/flask.svg" style="height: 25%;"><br>
+	 					<img class = "logos" src="images/software/bash.svg" style="height: 25%;">
+	 				</div>
+	 			</section>
+	 			<section id="bigdata">
+					<h1>Data Challenges</h1>
+			 		<img src="images/bigdata.svg" width=80%>	
+	 			</section>
+	 			<section id="data-pains">
+					<div class="container">
+						<div class="col">
+							<figure>
+							<img src="images/garbage_cd.jpg" width=400 style="box-shadow: 3px 3px 1px #000;">
+							<figcaption style="font-size:50%;">Garbage In, Garbage Out</figcaption></figure>
+						</div>
+						<div class="col">
+							<h1>The Pain of Big Data</h1><br>
+							<ul><li>More time cleaning data</li>
+							<li>Sensitive to analytic methods</li>
+							<li>High processing overhead</li>
+							<li>Data management issues</li>
+							</ul>
+						</div>
+					</div>					
+	 			</section>
+	 			<section id="borgman">
+					<div class="container">
+						<div class="col">
+							<figure>
+							<img src="images/borgman_headshot.jpg" width=200>
+							<figcaption style="font-size:50%;">
+								<a href=http://christineborgman.info/>Christine Borgman - UCLA</a><br>
+								Presidential Chair in Information Studies<br>
+								Professor of Information Studies
+							</figcaption></figure>
+						</div>
+
+						<div class="col" style="font-size:80%">
+								<a href=http://dx.doi.org/10.2218/ijdc.v0i0.0><p style="text-align:left;font-family:Raleway;font-size:100%">Borgman <i>et al</i> 2016. <i>Int. J. Digital Curation</i></a>
+								<ul>
+								<li>Methods & tools vary</li>
+								<li>Multiple techniques to generate similar datasets</li>
+								<li>Individuals responsible for data management</li>
+								<li>Data often neglected or lost when no longer needed</li></ul>
+						</div>
+					</div>
+				</section>
+				<section data-background-color="#121259">
+					<img src="images/michner_entropy.svg" width=600>
+				</section>
+	 			<section id="sci-challenge">
+					<div class="container">
+						<div class="col" style="text-align:right;margin-right:100px">
+							
+							<h1>Scientific<br>Challenges</h1>
+						</div>
+						<div class="col" style="font-size:80%">
+				 			<ul>
+			 				<li>More complex analysis <br>(GIS, Bayesian, Data Assimilation)</li>
+			 				<li>Highly integrated analysis</li>
+			 				<li>Higher reliance on (presumed) data quality</li>
+			 				<li>Data discovery</li></ul>
+						</div>
+					</div>
+	 			</section>
+	 			<section id="human-challenge">
+	 				<h1>Human Challenges</h1>
+	 				<ul>
+		 				<li>Costs of interdisciplinary research can be high</li>
+		 				<li>Lack of credit, or perceived credit</li>
+		 				<li>Management of data, individuals and projects</li>
+		 			</ul>
+	 			</section>
+	 			<section id="new-ways">
+					<img src="images/problems_circle_data.svg"  width=50%>
+					<h1 style="font-size:90%;">
+						New Techniques, New Opportunities
+					</h1>
+				</section>
+	 		</section>
+			<section>
+				<section id="data-promise">
+					<svg height="300" width="500">
+  						<circle cx="250" cy="250" r="40" stroke="black" stroke-width="3" fill="red" />
+  						<circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="red" />
+  						<circle cx="140" cy="200" r="40" stroke="black" stroke-width="3" fill="red" />
+  						<circle cx="250" cy="100" r="40" stroke="black" stroke-width="3" fill="red" />
+  						<circle cx="50" cy="250" r="40" stroke="black" stroke-width="3" fill="red" />
+  						<circle cx="100" cy="140" r="40" stroke="black" stroke-width="3" fill="red" />
+  						<circle cx="160" cy="80" r="40" stroke="black" stroke-width="3" fill="red" />
+  						<polyline fill="none" stroke="#FFFFFF" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" points="
+	340,112 375,150 340,188 "/>
+						<text x="440" y="230" style="font-size:5em;fill:#ffffff">?</text>
+					</svg>
+					<div data-animation-type="slide-down"><h1>The Promise of Data</h1></div>
+					<p>With more data we can do anything</p>
+				</section>
+				<section id="harvey">
+					<figure>
+						<img src="images/Harvey_Spectrogram.jpg" width=800>
+						<figcaption width=800><small>[<a href=http://ds.iris.edu/ds/nodes/dmc/specialevents/2017/08/30/2017-storm-harvey/>Robert Anthony, USGS</a>] Acceleration spectrogram for the vertical component of 735B (Kenedy, TX, USA) from 18 August to 29 August 2017 (UTC).</small></figcaption>
+					</figure>
+				</section>
+	 			<section id="clim_corp">
+	 				<figure>
+		 				<img src="images/climate_corp.jpg" width=500>
+		 				<figcaption style="font-size:80%" width=40%><i>"At</i> Climate <i>we leverage big data and cloud computing to tackle real-world problems in statistics, machine learning, climatology, and agriculture. We work with weather data, agricultural statistics, geological surveys, and satellite images."</i></figcaption>
+	 				<figure>
+	 			</section>
+	 			<section id='problems' data-background-color="#ffC038">
+	 				<h1>Problem Focused Approaches</h1>
+	 				<img src="images/middle_tail.svg" width=70%>
+	 			</section>
+	 			<section data-background-color="#ffC038" id="logos">
+	 			<div style="float: left;height:200px">
+	 			  <img src="images/Packrat.svg" height=200>
+	 			  <img src="images/DryadLogo_transparent.png" height=200>
+	 			  <img src="images/GBIF-2015.svg" height=200>
+	 			  <img src="images/pbdb_color.svg" height=200>
+	 			 </div>
+	 			</section>
+	 		</section>
+ 			<section data-background-color="#f26768" id="long-term">
+ 				<p style="font-size:100%">Long-term investments in cyberinfrastructure and human capital <br>are necessary to sustain current research & support future advances.</p>
+ 				<img src="images/nsf4.png" height=200 style="float:center; padding: 15px 40px 0px 0px;">
+ 				<img src="images/logo_earthcube_full_horizontal.png" height = 200>
+			</section>
+
+	 		<section id='case-studies'>
+	 			<section>
+					<img src="images/problems_circle_white.svg" width=70%>
+	 			</section>
+	 			<section>
+	 				<img src="images/friedlingstein.svg" style="width: 50%;">
+	 			</section>
+	 			<section id="paleon" data-background-image="images/pls_oak_map.svg">
+	 				<h1 style="text-shadow: 2px 2px 2px black;">The Paleoecological Observation Network</h1>
+	 				<h2 style="text-shadow: 2px 2px 2px black;">PalEON</h2>
+	 				<a href=></a>
+	 				<img src="images/nsf4.png" height=100>
+	 			</section>
+	 			<section opacity="0.25" id="fried-1">
+	 				<div class="container">
+						<div class="col">
+							<img src="images/friedlingstein.svg" style="width: 90%;">
+						</div>
+						<div class="col">
+							<img src="images/paleon_circle.svg" style="width: 90%;">
+						</div>
+					</div>
+	 			</section>
+	 			<section>
+	 				 <div class="container">
+						<div class="col">
+							<img src="images/friedlingstein.svg" style="width: 90%;">
+						</div>
+						<div class="col">
+			 				<h1>Causes of Divergence</h1>
+			 				<ul>
+			 					<li>Model assumptions</li>
+				 				<li>Driver datasets</li>
+				 				<li>Model components</li>
+				 				<li>Uncertainty</li>
+			 				</ul>
+			 			</div>
+			 		</div>
+	 			</section>
+	 			<section opacity="0.25">
+	 				<img src="images/friedlingstein_pt2.svg" style="width: 40%;">
+	 			</section>
+	 			<section>
+	 				<h1>Public Land Surveys</h1>
+	 				<img src="images/surveyors_2.jpg" height=350>
+	 				<img src="images/field_notes.jpg" height=350>
+	 			</section>
+	 			<section opacity="0.25">
+	 				<img src="images/friedlingstein_pt2.svg" style="width: 40%;">
+	 			</section>
+	 			<section id="paleon-qs">
+	 				<div class="container">
+						<div class="col" style="margin-left:20px">
+			 				<h1>Assumptions</h1>
+			 				<ul>
+				 				<li>Are modern forests representative of presettlement communities?</li>
+				 				<li>Are species-climate relationships stable?</li>
+				 				<li>Were pre-settlement forests in a stable state?</li>
+				 			</ul>
+			 			</div>
+			 			<div class="col">
+			 				<img src="images/paleon_circle.svg">
+			 			</div>
+			 		</div>
+	 			</section>
+	 			<section id="g-etal">
+	 				<h1>Pre-Settlement Forests</h1>
+	 				<figure>
+	 					<img src="images/journal.pone.0151935.g004.PNG" height=400>
+	 					<figcaption>Goring et al., 2016. PLoS.</figcaption>
+	 				</figure>
+	 			</section>
+	 			<section id="lost-forest">
+	 				<h1>Lost Forests & Novelty</h1>
+		 			<figure>
+		 				<img src="images/journal.pone.0151935.g008.PNG" height=450>
+		 				<figcaption>Goring et al., 2016. <i>PLoS</i></figcaption>
+		 			</figure>
+	 			</section>
+	 			<section>
+	 				<p style="color:#ffc038;font-size:150%">Are modern forests representative of pre-settlement communities?</p>
+	 				<p style="color:#f26768;font-size:120%">Significant vegetation change since EuroAmerican Settlement</h1>
+	 			</section>
+	 			<section>
+	 				<h1>Land Use is Climatically Biased</h1>
+		 			<figure>
+		 				<img src="images/climchange/figure_one.png" height=450>
+		 				<figcaption>Goring et al., 2017. <i>Ecol. Lett.</i></figcaption>
+		 			</figure>
+	 			</section>
+	 			<section>
+		 			<figure>
+		 				<img src="images/climchange/boxplot_clim.png" height=450>
+		 				<figcaption>Goring et al., 2017. <i>Ecol. Lett.</i></figcaption>
+		 			</figure>
+	 			</section>
+	 			<section>
+		 			<figure>
+		 				<img src="images/climchange/figureFour_panels.png" height=450>
+		 				<figcaption>Goring et al., 2017. <i>Ecol. Lett.</i></figcaption>
+		 			</figure>
+	 			</section>
+	 			<section id="hellinger">
+	 				<div class="container">
+						<div class="col" style="margin-left:20px;vertical-align: middle;">
+							<br>
+							<p style="color:#ffc038;font-size:150%">Are species-climate relationships stable?</p>
+							<p style="color:#f26768;font-size:120%">Land use change biases modern relationships.</p>
+						</div>
+						<div class="col">
+				 			<figure>
+				 				<img src="images/climchange/hellingerplot.png" height=450>
+				 				<figcaption>Goring et al., 2017. <i>Ecol. Lett.</i></figcaption>
+				 			</figure>
+			 			</div>
+			 		</div>
+	 			</section>
+	 			<section id="map-element" data-background-image="images/neotomamap.svg" opacity="0.25">
+	 				<h1 style="text-shadow: 2px 2px 2px black;">Neotoma Paleoecological Database</h1>
+	 			</section>
+	 			<section data-background-color="#9fdbd1">
+	 				<img src="images/sed_core.jpg" height=300 style="padding:0px 30px 40px 0px">
+	 				<img src=images/class_change_sig_percent-abs.svg>
+					<p style="font-size:70%;color:#000">Dawson <i>et al</i>. 2016. <i>Quat. Sci. Rev.</i>; Dawson <i>et al</i>. <i>in prep</i>.</p>
+	 			</section>
+	 			<section>
+	 				<p style="color:#ffc038;font-size:150%">Were pre-settlement forests in a stable state?</p>
+	 				<p style="color:#f26768;font-size:120%">Forests were changing at centennial scales.</p>
+	 			</section>
+	 			<section id="matthes">
+	 				<div class="container">
+						<div class="col" style="margin-left:20px;text-align:left;">
+							<br><br>
+							<h1>Model Interrogation</h1>
+							<ul style="font-size:90%">
+								<li>Poor initial PFT-climate fit</li>
+								<li>Evergreen taxa no better than random</li>
+								<li>Leads to errors in simulated albedo, net primary productivity, and transpiration</li>
+						</div>
+						<div class="col" style="margin-left:20px">
+	 				<img src="images/jgrg20540-fig-0003.png" height=450>
+	 				<p style="font-size:70%">Matthes <i>et al</i>., 2016. <i>J Geophys Res</i>.</p>
+	 				</div>
+	 			</section>
+	 			<section id="paleon">
+	 				<img src="images/paleon_circle.svg" style="width: 50%;">
+	 				<img src="images/nsf4.png" height=100>
+	 			</section>
+	 		</section>
+ 			<section id="neotomastacker" data-background-color="#f26768">
+ 				<section>
+ 					<img src="images/multi_question_data.svg">
+ 				</section>
+ 				<section>
+ 					<img src="images/middle_tail.svg">
+ 				</section>
+ 				<section>
+ 				 	<h1 style="position:absolute;text-align:left">Neotoma Paleoecological<br>Database</h1>
+ 					<svg class="neostack" height="600" width="600">
+ 				</section>
+ 				<section id="histogram">
+ 					<h1>Support for Science</h1>
+ 					<div style="padding: 30px 10px 10px 10px;">
+ 						<img src="images/sed_core.jpg" height=300 style="padding:0px 0px 30px 0px">
+ 						<img src="images/histograms_cleaned.svg" height=340 style="margin-top:300">
+ 					</div>
+ 				</section>
+ 				<section>
+ 					<h1>Combining Human & Technical Solutions</h1>
+ 					<h2><code>neotoma</code>: R package for paleoecology</h2>
+ 					Domain Expertise & Computational Skill
+ 					<p style="font-size:60%">Goring <i>et al</i>. 2015. <i>Open Quaternary</i>.</p>
+ 				</section>
+ 				<section>
+ 					<a href="http://htmlpreview.github.io/?https://github.com/NeotomaDB/Workbooks/blob/master/AgeModels/AgeModels.html" data-preview-link><img src="images/multi_neotoma.svg"></a>
+ 				</section>
+				<section id="baconizing">
+					<img src="images/baconizing.svg">
+					<h1>Surprises in Legacy Data</h1>
+				</section>
+				<section data-background-color="#121259">
+					<img src="images/michner_entropy.svg" width=600>
+				</section>
+ 				<section>
+ 					<img src="images/throughput.svg"><br><br>
+ 					<img src="images/nsf4.png" height=100 style="float:center; padding: 15px 40px 0px 0px;">
+ 					<img src="images/logo_earthcube_full_horizontal.png" height = 100>
+ 				</section>
+ 				<section id="annotate">
+ 					<img src="images/annotation_system.svg" height=600>
+ 				</section>
+ 				<section>
+ 					<h1>Problems Need New Solutions</h1>
+ 					<img src="images/logo_earthcube_full_horizontal.png" height = 100 style="float:center; padding: 30px 0px 0px 0px;">
+ 					<img src="images/wds_logo.png" height = 100 style="float:center; padding: 30px 0px 0px 0px;">
+ 					<br>
+ 					<img src="images/ESIP-logo-new_edited3.png" height = 100 style="float:center; padding: 30px 0px 0px 0px;">
+ 					<img src="images/DataONE.jpg" height = 100 style="float:center; padding: 30px 0px 0px 0px;"><br>
+ 					<img src="images/ischool-logo.png" height = 75 style="float:center; padding: 30px 0px 0px 0px;">
+ 				</section>
+ 				<section>
+ 					<img src="images/problems_circle.svg" width=70%>
+ 				</section>
+
+ 			</section>
 			</div>
-		</div>
+	</div>
 
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.js"></script>
+	<script src="https://d3js.org/d3.v4.min.js"></script>
+	<script src="lib/js/head.min.js"></script>
+	<script src="js/reveal.js"></script>
+	<script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"
+   integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log=="
+   crossorigin=""></script>
+ 
+	<script>
+		// Required, even if empty.
+		Reveal.initialize({
+			progress: true,
+			slideNumber: false,
+			margin: 0.05,
+			width: "100%",
+    		height:"100%"
+		});
+	</script>
 
-		<script>
-			// More info about config & dependencies:
-			// - https://github.com/hakimel/reveal.js#configuration
-			// - https://github.com/hakimel/reveal.js#dependencies
-			Reveal.initialize({
-				dependencies: [
-					{ src: 'plugin/markdown/marked.js' },
-					{ src: 'plugin/markdown/markdown.js' },
-					{ src: 'plugin/notes/notes.js', async: true },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
-				]
-			});
-		</script>
-	</body>
+	<script>
+	<!-- This is the code to stack our circles -->
+
+	var svg = d3.select(".neostack"),
+	    diameter =  600,
+	    g = svg.append("g").attr("transform", "translate(2,2)"),
+	    format = d3.format(",d");
+
+	var pack = d3.pack()
+	    .size([diameter - 2, diameter - 2]);
+
+	d3.json("neotoma_vars.json", function(error, root) {
+	  if (error) throw error;
+
+	  root = d3.hierarchy(root)
+	      .sum(function(d) { return d.n; })
+	      .sort(function(a, b) { return b.value - a.value; });
+
+	  var node = g.selectAll(".node")
+	    .data(pack(root).descendants())
+	    .enter().append("g")
+	      .attr("class", function(d) { return d.children ? "node" : "leaf node"; })
+	      .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+
+	  node.append("title")
+	      .text(function(d) { return d.data.name + "\n" + format(d.value); });
+
+	  node.append("circle")
+	      .attr("r", function(d) { return d.r; });
+
+	  node.filter(function(d) { return !d.children; }).append("text")
+	      .attr("dy", "0.2em")
+	      .text(function(d) { return d.data.name.substring(0, d.r / 3); });
+	});
+</script>
+
+</body>
 </html>
